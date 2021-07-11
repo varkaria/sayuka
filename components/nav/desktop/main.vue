@@ -2,8 +2,10 @@
   <div class="hidden lg:flex lg:flex-shrink-0">
     <div class="flex flex-col w-64 pt-5 pb-4 bg-gray-100 border-r border-gray-200">
       <div class="px-6">
+        <NuxtLink to="/">
         <p class="text-3xl font-bold text-gray-800">Sayuka</p>
-        <p class="text-xs text-gray-500">1.0.0</p>
+        </NuxtLink>
+        <p class="font-bold text-green-500 text-md">Safe mode ON</p>
       </div>
       <div class="flex flex-col flex-1 h-0 overflow-y-auto">
         <div class="px-3 mt-5">
@@ -29,13 +31,13 @@
               </svg>
             </div>
             <input
+              id="search-desktop"
+              v-model="query" 
               type="text"
               name="search-desktop"
-              id="search-desktop"
               class="block w-full p-2 border-gray-300 rounded-md focus:border-blue-500 pl-9 sm:text-sm"
-              :value="value"
-              @input="updateValue($event.target.value)"
               placeholder="Search"
+              @keypress.enter="goToSearchPage"
             />
           </div>
         </div>
@@ -46,11 +48,19 @@
 
 <script>
 export default {
-  props: ['value'],
+  data() {
+    return {
+      query: ''
+    }
+  },
   methods: {
-    updateValue(value) {
-      this.$emit('input', value)
-    },
+    goToSearchPage() {
+      if (this.query === '') {
+        this.$router.push({ name: 'index', params: { query: this.query } })
+      } else {
+        this.$router.push({ name: 'search-query', params: { query: this.query } })
+      }
+    }    
   },
 }
 </script>

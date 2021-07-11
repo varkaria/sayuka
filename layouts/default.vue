@@ -1,8 +1,8 @@
 <template>
-  <div class="h-screen flex overflow-hidden bg-gray-50">
+  <div class="flex h-screen overflow-hidden bg-gray-50">
     <NavDesktopMain v-model="search" />
-    <div class="flex flex-col w-0 flex-1 overflow-hidden">
-      <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none pb-6 p-10">
+    <div class="flex flex-col flex-1 w-0 overflow-hidden">
+      <main class="relative z-0 flex-1 p-10 pb-6 overflow-y-auto focus:outline-none">
         <Nuxt />
       </main>
     </div>
@@ -13,8 +13,8 @@
 export default {
   data() {
     return {
-      search: '',
+      search: ''
     }
-  },
+  }
 }
 </script>

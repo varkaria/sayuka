@@ -1,5 +1,6 @@
 <template>
   <div class="relative overflow-hidden bg-gray-200 rounded-xl dou-card">
+    <NuxtLink :to="`/doujin/${data.id}`">
     <a>
       <div class="absolute top-0 bottom-0 left-0 right-0 z-10 flex flex-col justify-between w-full px-4 py-6 text-white transition duration-200 ease-in-out opacity-0 bg-black-overlay hover:opacity-100 md:px-5 lg:px-6 2xl:py-10">
         <div>
@@ -25,6 +26,7 @@
         />
       </div>
     </a>
+    </NuxtLink>
   </div>
 </template>
 

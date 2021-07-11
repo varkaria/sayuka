@@ -3,25 +3,13 @@
     <a>
       <div class="absolute top-0 bottom-0 left-0 right-0 z-10 flex flex-col justify-between w-full px-4 py-6 text-white transition duration-200 ease-in-out opacity-0 bg-black-overlay hover:opacity-100 md:px-5 lg:px-6 2xl:py-10">
         <div>
-            <p class="truncate font-regular text-md sm:text-sm md:text-sm">
+            <p class="text-xs truncate font-regular sm:text-sm md:text-sm">
             {{ data.title }}
           </p>
           <p class="font-semibold truncate 2xl:overflow-clip text-md sm:text-lg md:text-xl">
             {{ data.th_title }}
           </p>
-          <div class="flex flex-wrap 2xl:mt-4">
-            <div v-for="(tag, i) in data.tags" :key="i" class="p-1">
-              <div v-if="i < 6" :class="`text-xs 2xl:text-sm uppercase rounded-md px-2 py-1 text-white bg-${tag.color}-500 font-semibold`">
-                {{ tag.name }}
-              </div>
-              <div v-if="i > 6" :class="`text-xs 2xl:text-sm hidden 2xl:block uppercase rounded-md px-2 py-1 text-white bg-${tag.color}-500 font-semibold`">
-                {{ tag.name }}
-              </div>
-              <div v-if="i == 6" :class="`text-xs block 2xl:hidden uppercase rounded-md px-2 py-1 text-white bg-gray-500 font-semibold`">
-                ...
-              </div>
-            </div>
-          </div>
+          <EleDoutags :data='data.tags' />
         </div>
         <div class="flex pt-1">
           <div class="flex items-center pr-2 text-sm">{{ data.artist }}</div>

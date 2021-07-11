@@ -1,14 +1,13 @@
 <template>
     <div class="mb-8" :id="sort">
-      <p class="text-lg leading-none font-bold text-gray-600 tracking-tight mb-8">{{ sort }} doujin</p>
-      <div v-if='load == false' class="grid grid-flow-row grid-cols-2
-      md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 transition-all gap-4">
+      <p class="mb-8 text-lg font-bold leading-none tracking-tight text-gray-600">{{ sort }} doujin</p>
+      <div v-if='load == false' class="grid grid-flow-row grid-cols-2 gap-4 transition-all lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         <div v-for="(item, i) in data" :key="i">
           <EleDoucard :data=item />
         </div>
       </div>
       <div class="flex justify-center" v-else>
-          <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+          <div class="w-12 h-12 mb-4 ease-linear border-4 border-t-4 border-gray-200 rounded-full loader"></div>
       </div>
     </div>
 </template>

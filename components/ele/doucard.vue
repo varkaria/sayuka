@@ -1,28 +1,29 @@
 <template>
-  <div class="bg-gray-200 overflow-hidden rounded-xl relative dou-card">
+  <div class="relative overflow-hidden bg-gray-200 rounded-xl dou-card">
     <a>
-      <div class="absolute top-0 bottom-0 left-0 right-0 w-full bg-black-overlay z-10 
-      transition ease-in-out duration-200 opacity-0 hover:opacity-100 text-white 
-      flex flex-col justify-between px-4 py-8 md:px-5 lg:px-6 md:py-9 lg:py-10">
+      <div class="absolute top-0 bottom-0 left-0 right-0 z-10 flex flex-col justify-between w-full px-4 py-6 text-white transition duration-200 ease-in-out opacity-0 bg-black-overlay hover:opacity-100 md:px-5 lg:px-6 2xl:py-10">
         <div>
-            <p class="font-regular truncate text-md sm:text-sm md:text-sm">
+            <p class="truncate font-regular text-md sm:text-sm md:text-sm">
             {{ data.title }}
           </p>
-          <p class="font-semibold truncate text-md sm:text-lg md:text-xl">
+          <p class="font-semibold truncate 2xl:overflow-clip text-md sm:text-lg md:text-xl">
             {{ data.th_title }}
           </p>
-          <div class="flex flex-wrap">
+          <div class="flex flex-wrap 2xl:mt-4">
             <div v-for="(tag, i) in data.tags" :key="i" class="p-1">
-              <div v-if="i < 8" :class="`text-xs uppercase rounded-md px-2 py-1 text-white bg-${tag.color}-500 font-semibold`">
+              <div v-if="i < 6" :class="`text-xs 2xl:text-sm uppercase rounded-md px-2 py-1 text-white bg-${tag.color}-500 font-semibold`">
                 {{ tag.name }}
               </div>
-              <div v-if="i == 8" :class="`text-xs uppercase rounded-md px-2 py-1 text-white bg-gray-500 font-semibold`">
+              <div v-if="i > 6" :class="`text-xs 2xl:text-sm hidden 2xl:block uppercase rounded-md px-2 py-1 text-white bg-${tag.color}-500 font-semibold`">
+                {{ tag.name }}
+              </div>
+              <div v-if="i == 6" :class="`text-xs block 2xl:hidden uppercase rounded-md px-2 py-1 text-white bg-gray-500 font-semibold`">
                 ...
               </div>
             </div>
           </div>
         </div>
-        <div class="pt-1 flex">
+        <div class="flex pt-1">
           <div class="flex items-center pr-2 text-sm">{{ data.artist }}</div>
         </div>
       </div>

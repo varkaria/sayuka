@@ -1,30 +1,20 @@
 <template>
   <div class="hidden lg:flex lg:flex-shrink-0">
-    <div
-      class="flex flex-col w-64 border-r border-gray-200 pt-5 pb-4 bg-gray-100"
-    >
+    <div class="flex flex-col w-64 pt-5 pb-4 bg-gray-100 border-r border-gray-200">
       <div class="px-6">
-        <p class="font-bold text-3xl text-gray-800">Sayuka</p>
+        <p class="text-3xl font-bold text-gray-800">Sayuka</p>
         <p class="text-xs text-gray-500">1.0.0</p>
       </div>
-      <div class="h-0 flex-1 flex flex-col overflow-y-auto">
+      <div class="flex flex-col flex-1 h-0 overflow-y-auto">
         <div class="px-3 mt-5">
           <label htmlFor="search-desktop" class="sr-only"> Search </label>
-          <div class="mt-1 relative rounded-md shadow-sm">
+          <div class="relative mt-1 rounded-md shadow-sm">
             <div
-              class="
-                absolute
-                inset-y-0
-                left-0
-                pl-3
-                flex
-                items-center
-                pointer-events-none
-              "
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none "
               aria-hidden="true"
             >
               <svg
-                class="mr-3 h-4 w-4 text-gray-400"
+                class="w-4 h-4 mr-3 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -42,16 +32,7 @@
               type="text"
               name="search-desktop"
               id="search-desktop"
-              class="
-                focus:border-blue-500
-                block
-                w-full
-                p-2
-                pl-9
-                sm:text-sm
-                border-gray-300
-                rounded-md
-              "
+              class="block w-full p-2 border-gray-300 rounded-md focus:border-blue-500 pl-9 sm:text-sm"
               :value="value"
               @input="updateValue($event.target.value)"
               placeholder="Search"

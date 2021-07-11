@@ -1,4 +1,4 @@
-# sayuka
+# sayuka-front
 
 ## Build Setup
 

@@ -1,8 +1,7 @@
 <template>
+  <div id="home">
+    <EleDoulist sort='Recent' />
 
+    <EleDoulist sort='Random' />
+  </div>
 </template>
-<script>
-export default {
-    layout: 'index'
-}
-</script>

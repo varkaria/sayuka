@@ -1,7 +1,7 @@
 <template>
   <div id="doujin">
     <div class="mb-8">
-        <img v-for='(img, i) in result.preview_api' :key="i" :src=img>
+        <EleDoupageImage v-for='(img, i) in result.preview_api' :key="i" :img=img />
     </div>
   </div>
 </template>

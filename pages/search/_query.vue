@@ -1,7 +1,7 @@
 <template>
   <div id="search">
     <div class="mb-8">
-      <p class="mb-8 text-lg font-bold leading-none tracking-tight text-gray-600">Search Results for : {{ $route.params.query }}</p>
+      <p class="mb-8 text-lg font-bold leading-none tracking-tight text-gray-600 dark:text-gray-100">Search Results for : {{ $route.params.query }}</p>
       <EleLoading v-if="load" />
       <EleDoulist :data=result /> 
     </div>

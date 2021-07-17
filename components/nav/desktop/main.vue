@@ -1,11 +1,15 @@
 <template>
   <div class="hidden lg:flex lg:flex-shrink-0">
-    <div class="flex flex-col w-64 pt-5 pb-4 bg-gray-100 border-r border-gray-200">
+    <div class="flex flex-col w-64 pt-5 pb-4 bg-gray-100 dark:bg-gray-600">
       <div class="px-6">
         <NuxtLink to="/">
-        <p class="text-3xl font-bold text-gray-800">Sayuka</p>
+          <p class="text-3xl font-bold text-gray-800 dark:text-gray-100">
+            Sayuka
+          </p>
         </NuxtLink>
-        <p class="font-bold text-green-500 text-md">Safe mode ON</p>
+        <p class="font-bold text-green-500 dark:text-green-300 text-md">
+          Safe mode ON
+        </p>
       </div>
       <div class="flex flex-col flex-1 h-0 overflow-y-auto">
         <div class="px-3 mt-5">
@@ -32,15 +36,61 @@
             </div>
             <input
               id="search-desktop"
-              v-model="query" 
+              v-model="query"
               type="text"
               name="search-desktop"
-              class="block w-full p-2 border-gray-300 rounded-md focus:border-blue-500 pl-9 sm:text-sm"
+              class="block w-full p-2 border-gray-300 rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-blue-500 pl-9 sm:text-sm"
               placeholder="Search"
               @keypress.enter="goToSearchPage"
             />
           </div>
         </div>
+
+        <nav class="px-3 mt-6">
+          <div class="space-y-1">
+            <a
+              class="flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out rounded-md cursor-pointer dark:text-gray-100 group focus:outline-none focus:bg-gray-50 hover:text-gray-900 hover:bg-gray-50 dark:hover:bg-gray-700"
+              @click="Setcolor()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6 mr-3 text-gray-400 transition duration-150 ease-in-out dark:text-gray-100 group-hover:text-gray-500 group-focus:text-gray-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="{2}"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+              {{ colors[cur_color] }} Mode</a
+            >
+          </div>
+
+          <div class="mt-8">
+            <h3
+              class="px-3 text-xs font-semibold leading-4 tracking-wider text-gray-500 uppercase dark:text-gray-200 "
+            >
+              Tags
+            </h3>
+            <div
+              role="group"
+              aria-labelledby="teams-headline"
+              class="mt-1 space-y-1"
+            >
+              <a
+                v-for="(tag, i) in tags_health"
+                :key="i"
+                class="flex items-center px-3 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out rounded-md dark:text-gray-300 group hover:text-gray-900 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none"
+                ><span :class="`w-2.5 h-2.5 mr-4 rounded-full bg-${tag.color}-500`"></span
+                ><span class="truncate">{{ tag.name }}</span></a
+              >
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   </div>
@@ -50,7 +100,35 @@
 export default {
   data() {
     return {
-      query: ''
+      query: '',
+      colors: ['Light', 'Dark', 'System'],
+      cur_color: this.Colortoint(),
+      safemode: this.$store.state.safemode,
+      tags_health: [{
+        name: 'Vanilla',
+        color: 'green'
+      },
+      {
+        name: 'Warning',
+        color: 'yellow'
+      },
+      {
+        name: 'Dangerous',
+        color: 'red'
+      },
+      {
+        name: 'Position',
+        color: 'pink'
+      },
+      {
+        name: 'Type',
+        color: 'indigo'
+      },
+      {
+        name: 'More tags',
+        color: 'gray'
+      }
+      ]
     }
   },
   methods: {
@@ -58,9 +136,38 @@ export default {
       if (this.query === '') {
         this.$router.push({ name: 'index', params: { query: this.query } })
       } else {
-        this.$router.push({ name: 'search-query', params: { query: this.query } })
+        this.$router.push({
+          name: 'search-query',
+          params: { query: this.query },
+        })
       }
-    }    
+    },
+    Setcolor() {
+      this.cur_color += 1
+      if (this.cur_color === 3) {
+        this.cur_color = 0
+      }
+      this.$colorMode.preference = this.colors[this.cur_color].toLowerCase()
+    },
+    Colortoint() {
+      const w = this.$colorMode.preference
+      if (w === 'light') {
+        return 0
+      }
+      if (w === 'dark') {
+        return 1
+      }
+      if (w === 'system') {
+        return 2
+      }
+    },
   },
 }
 </script>
+
+<style>
+input.checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #48bb78;
+}
+</style>

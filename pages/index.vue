@@ -1,12 +1,12 @@
 <template>
   <div id="home">
     <div class="mb-8">
-      <p class="mb-8 text-lg font-bold leading-none tracking-tight text-gray-600">Recent doujin</p>
+      <p class="mb-8 text-xl font-bold leading-none tracking-tight text-gray-600 dark:text-white"> Recent doujins</p>
       <EleLoading v-if="recent.load" />
       <EleDoulist :data=recent.data /> 
     </div>
     <div class="mb-8">
-      <p class="mb-8 text-lg font-bold leading-none tracking-tight text-gray-600">Random doujin</p>
+      <p class="mb-8 text-xl font-bold leading-none tracking-tight text-gray-600 dark:text-white">Random doujins</p>
       <EleLoading v-if="random.load" />
       <EleDoulist :data=random.data /> 
     </div>

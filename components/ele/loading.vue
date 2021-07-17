@@ -1,8 +1,8 @@
 <template>
-    <div class="flex p-5 space-x-3 bg-white rounded-full loader">
-      <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-      <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
-      <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+    <div class="flex p-5 space-x-3 loader">
+      <div class="w-5 h-5 bg-gray-800 rounded-full dark:bg-gray-300 animate-bounce"></div>
+      <div class="w-5 h-5 bg-gray-800 rounded-full dark:bg-gray-300 animate-bounce"></div>
+      <div class="w-5 h-5 bg-gray-800 rounded-full dark:bg-gray-300 animate-bounce"></div>
     </div>
 </template>
 

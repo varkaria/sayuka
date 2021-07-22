@@ -1,25 +1,21 @@
 <template>
-    <div class="flex p-5 space-x-3 loader">
-      <div class="w-5 h-5 bg-gray-800 rounded-full dark:bg-gray-300 animate-bounce"></div>
-      <div class="w-5 h-5 bg-gray-800 rounded-full dark:bg-gray-300 animate-bounce"></div>
-      <div class="w-5 h-5 bg-gray-800 rounded-full dark:bg-gray-300 animate-bounce"></div>
-    </div>
+  <div class="flex p-5 space-x-3">
+    <div class="w-12 h-12 border-4 border-gray-600 rounded-full dark:border-gray-300 loader" />
+  </div>
 </template>
 
 <style scoped>
-.loader div {
-  animation-duration: 0.5s;
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.loader div:first-child {
-  animation-delay: 0.1s;
-}
-
-.loader div:nth-child(2) {
-  animation-delay: 0.3s;
-}
-
-.loader div:nth-child(3) {
-  animation-delay: 0.6s;
+.loader {
+  border-right-color: transparent;
+  animation: loader-rotate 1s linear infinite;
 }
 </style>

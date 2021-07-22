@@ -28,7 +28,8 @@ export default {
   
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/vue-progressive-image.js' }
+    { src: '~/plugins/vue-progressive-image.js' },
+    { src: '~/plugins/persistedState.client.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,7 +40,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    'nuxt-windicss',
     '@nuxtjs/color-mode'
   ],
 

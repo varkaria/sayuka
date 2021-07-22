@@ -27,6 +27,7 @@ export default {
         {
           params: {
             q: this.$route.params.query,
+            safe: this.$store.state.doujin.safemode
           },
         }
       )

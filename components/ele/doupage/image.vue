@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center mx-auto mb-2">
-    <progressive-img class="rounded-sm" :src="img" />
+    <progressive-img class="rounded-md" :src="img" />
   </div>
 </template>
 

@@ -3,8 +3,8 @@
     <NuxtLink to="/">
       <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">Sayuka</p>
     </NuxtLink>
-      <p v-if="$store.state.doujin.safemode" class="flex-grow font-bold text-green-500 dark:text-green-300 text-md pt-2">Safe mode ON</p>
-      <p v-else class="flex-grow font-bold text-red-500 dark:text-red-300 text-md pt-2">Safe mode OFF</p>
+      <p v-if="$store.state.doujin.safemode" class="flex-grow font-bold text-green-500 dark:text-green-300 text-md pt-1">Safe mode ON</p>
+      <p v-else class="flex-grow font-bold text-red-500 dark:text-red-300 text-md pt-1">Safe mode OFF</p>
       <div class="flex justify-self-end">
         <div
         :class="open ? 'bg-red-500 opacity-25':'opacity-100'"

@@ -15,12 +15,12 @@
           <div class="flex items-center pr-2 text-sm">{{ data.artist }}</div>
         </div>
       </div>
-      <div>
+      <div class="transition-all" :class="{ 'safe-mode' : $store.state.doujin.safemode }">
         <div style="box-sizing: border-box; display: block; max-width: 100%">
           <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjUwMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="/>
         </div>
         <progressive-img
-          :src="`${data.preview_api}`"
+          :src="`https://api.varkaria.tech/get_image/${data.preview[0]}/${data.preview[1]}`"
           class="overflow-hidden img-card blur"
         />
       </div>
@@ -69,6 +69,10 @@ export default {
 
 .img-card.blur {
   filter: blur(0px);
+}
+
+.safe-mode {
+  filter: blur(5px)
 }
 </style>
 

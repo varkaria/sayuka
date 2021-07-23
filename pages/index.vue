@@ -28,7 +28,7 @@ export default {
     }
   },
   watch: {
-  '$store.state.doujin.safemode' () {
+  '$store.state.doujin.vanillamode' () {
     this.FetchDoujinData('recent')
     this.FetchDoujinData('random')
   }
@@ -45,7 +45,7 @@ export default {
         {
           params: {
             sort: sort.toLowerCase(),
-            safe: this.$store.state.doujin.safemode
+            safe: this.$store.state.doujin.vanillamode
           },
         }
       )

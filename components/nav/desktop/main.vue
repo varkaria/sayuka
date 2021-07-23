@@ -4,8 +4,20 @@
       <div class="px-6">
         <NuxtLink to="/">
           <p class="text-3xl font-bold text-gray-800 dark:text-gray-100">Sayuka</p>
+          <p class="mt-1 text-xs font-medium text-gray-800 dark:text-gray-100">A thai doujin but ui look nice lamo</p>
         </NuxtLink>
-        <p v-if="$store.state.doujin.safemode" class="font-bold text-green-500 dark:text-green-300 text-md">Safe mode ON</p>
+        <p
+          v-if="$store.state.doujin.safemode"
+          class="font-bold text-green-500 text-md dark:text-green-300"
+        >
+          Safe Mode ON
+        </p>
+        <p
+          v-if="$store.state.doujin.vanillamode"
+          class="text-xs font-bold text-green-500 dark:text-green-300"
+        >
+          Vanilla Mode ON
+        </p>
       </div>
       <div class="flex flex-col flex-1 h-0 overflow-y-auto">
         <div class="px-3 mt-5">
@@ -43,16 +55,53 @@
         </div>
 
         <nav class="px-3 mt-6">
-          <div class="space-y-1">
-            <a class="nav-button" @click="Setcolor()">
-              <SunIcon class="icon"></SunIcon>
-              {{ colors[cur_color] }} Mode</a
+          <div class="mt-2">
+            <h3
+              class="px-3 text-xs font-semibold leading-4 tracking-wider text-gray-500 uppercase dark:text-gray-200"
             >
+              Page
+            </h3>
 
-            <a class="nav-button" @click="ToggleSafeMode()">
-              <ExclamationIcon class="icon"></ExclamationIcon>
-              Safe Mode</a
+            <div class="space-y-1">
+              <nuxt-link to="/">
+                <a class="nav-button">
+                  <HomeIcon class="icon"></HomeIcon>
+                  Home</a
+                >
+              </nuxt-link>
+
+              <nuxt-link to="/history">
+                <a class="nav-button">
+                  <ArchiveIcon class="icon"></ArchiveIcon>
+                  History</a
+                >
+              </nuxt-link>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <h3
+              class="px-3 text-xs font-semibold leading-4 tracking-wider text-gray-500 uppercase dark:text-gray-200"
             >
+              Settings
+            </h3>
+
+            <div class="mt-1 space-y-1">
+              <a class="nav-button" @click="Setcolor()">
+                <SunIcon class="icon"></SunIcon>
+                {{ colors[cur_color] }} Mode</a
+              >
+
+              <a class="nav-button" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.safemode }" @click="Togglesafemode()" >
+                <ExclamationIcon class="icon"></ExclamationIcon>
+                Safe Mode</a
+              >
+
+              <a class="nav-button" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.vanillamode }" @click="Togglevanillamode()" >
+                <SparklesIcon class="icon"></SparklesIcon>
+                Vanilla Mode</a
+              >
+            </div>
           </div>
 
           <div class="mt-8">
@@ -78,12 +127,21 @@
 </template>
 
 <script>
-import { SunIcon, ExclamationIcon } from "@vue-hero-icons/outline";
+import {
+  SunIcon,
+  ExclamationIcon,
+  ArchiveIcon,
+  HomeIcon,
+  SparklesIcon,
+} from "@vue-hero-icons/outline";
 
 export default {
   components: {
     SunIcon,
-    ExclamationIcon
+    ExclamationIcon,
+    ArchiveIcon,
+    HomeIcon,
+    SparklesIcon,
   },
   data() {
     return {
@@ -136,8 +194,11 @@ export default {
       }
       this.$colorMode.preference = this.colors[this.cur_color].toLowerCase();
     },
-    ToggleSafeMode() {
-      this.$store.commit('doujin/tsafemode')
+    Togglevanillamode() {
+      this.$store.commit("doujin/tvanillamode");
+    },
+    Togglesafemode() {
+      this.$store.commit("doujin/tsafemode");
     },
     Colortoint() {
       const w = this.$colorMode.preference;

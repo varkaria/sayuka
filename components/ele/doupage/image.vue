@@ -1,6 +1,12 @@
 <template>
-  <div class="flex justify-center mx-auto mb-2">
-    <progressive-img class="rounded-md" :src="img" />
+  <div
+    class="flex justify-center mx-auto mb-2 transition-all filter"
+    :class="{ 'safe-mode': $store.state.doujin.safemode }"
+  >
+    <img
+      class="rounded-md"
+      :src="`https://api.varkaria.tech/get_image/${img.m_id}/${img.m_file}`"
+    >
   </div>
 </template>
 
@@ -9,11 +15,11 @@ export default {
   props: {
     // eslint-disable-next-line vue/require-default-prop
     img: {
-      type: String,
+      type: Object,
       require: true,
     },
   },
-}
+};
 </script>
 
 <style lang="css" scope>
@@ -51,6 +57,12 @@ export default {
 }
 
 .blank {
-    box-sizing: border-box; display: block; max-width: 100%
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
+}
+
+.safe-mode {
+  filter: blur(5px);
 }
 </style>

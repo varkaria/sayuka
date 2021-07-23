@@ -10,17 +10,17 @@
     <p v-else class="flex-grow font-bold text-red-500 dark:text-red-300 text-xs md:text-base pt-1">Vanilla Mode OFF</p>
       
     <div :class="open">
-      <button class="text-black dark:text-white text-2xl p-2 font-bold outline-none" @click="tog()">&#9776;</button>
+      <button class="text-black dark:text-white text-2xl mt-1 font-bold outline-none" @click="tog()">&#9776;</button>
     </div>
     <nav
     :class="open ? 'navbar-open' : 'navbar-close'"
     class="navbar w-64 absolute overflow-x-scroll bg-gray-100 dark:bg-gray-600 top-0 h-screen"
     >
-      <div class="flex pr-2 justify-end">
-        <button class="p-2 text-white text-xl font-bold" @click="tog()">&#9747;</button>
+      <div class="flex justify-end mx-4 my-2">
+        <button class="text-white text-xl font-bold" @click="tog()">&#9747;</button>
       </div>
       <p class="text-2xl font-bold text-center text-gray-800 dark:text-gray-100">Menu</p>
-      <div class="px-3 mt-6 mb-4">
+      <div class="mx-4 my-4">
         <label htmlFor="search-desktop" class="sr-only"> Search </label>
           <div class="relative mt-1 rounded-md shadow-sm">
             <div
@@ -53,7 +53,7 @@
             />
           </div>
       </div>
-      <ul class="list-none text-gray-800 dark:text-gray-100">
+      <ul class="list-none">
 
         <li class="mx-4 mt-2">
           <h3
@@ -92,21 +92,21 @@
         </li>
         
         <li class="mx-4 mt-1">
-          <a class="nav-button flex flex-row gap-x-2 ml-1" @click="Setcolor()">
+          <a class="nav-button flex flex-row gap-x-2" @click="Setcolor()">
             <SunIcon class="icon"></SunIcon>
             {{ colors[cur_color] }} Mode
           </a>
         </li>
         
         <li class="mx-4 mt-1">
-          <a class="nav-button flex flex-row gap-x-2 ml-1" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.safemode }" @click="ToggleSafeMode()">
+          <a class="nav-button flex flex-row gap-x-2" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.safemode }" @click="ToggleSafeMode()">
             <ExclamationIcon class="icon"></ExclamationIcon>
             Safe Mode
           </a>
         </li>
 
         <li class="mx-4 mt-1">
-          <a class="nav-button flex flex-row gap-x-2 ml-1" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.vanillamode }" @click="Togglevanillamode()" >
+          <a class="nav-button flex flex-row gap-x-2" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.vanillamode }" @click="Togglevanillamode()" >
             <SparklesIcon class="icon"></SparklesIcon>
             Vanilla Mode
           </a>
@@ -118,7 +118,7 @@
           >
             Tags
           </h3>
-          <div role="group" aria-labelledby="teams-headline" class="ml-2 mt-1 space-y-1">
+          <div role="group" aria-labelledby="teams-headline" class="ml-1 my-1 space-y-1">
             <a
               v-for="(tag, i) in tags_health"
               :key="i"

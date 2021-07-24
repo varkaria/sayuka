@@ -1,25 +1,28 @@
 <template>
-  <div class="flex fixed w-full items-center px-6 h-16 gap-x-4 bg-gray-100 dark:bg-gray-600 z-index-10">
+  <div class="fixed flex items-center w-full h-16 px-6 bg-gray-100 gap-x-4 dark:bg-gray-600 z-index-10">
     <NuxtLink to="/">
-      <p class="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100">Sayuka</p>
+      <p class="text-xl font-bold text-gray-800 md:text-2xl dark:text-gray-100">Sayuka</p>
     </NuxtLink>
 
-    <p v-if="$store.state.doujin.safemode" class="font-bold text-green-500 dark:text-green-300 text-xs md:text-base pt-1">Safe mode ON</p>
-    <p v-else class="font-bold text-red-500 dark:text-red-300 text-xs md:text-base pt-1">Safe mode OFF</p>
-    <p v-if="$store.state.doujin.vanillamode" class="flex-grow font-bold text-green-500 dark:text-green-300 text-xs md:text-base pt-1">Vanilla Mode ON</p>
-    <p v-else class="flex-grow font-bold text-red-500 dark:text-red-300 text-xs md:text-base pt-1">Vanilla Mode OFF</p>
+    <p v-if="$store.state.doujin.safemode" class="pt-1 text-xs font-bold text-green-500 dark:text-green-300 md:text-base">Safe mode ON</p>
+    <p v-else class="pt-1 text-xs font-bold text-red-500 dark:text-red-300 md:text-base">Safe mode OFF</p>
+    <p v-if="$store.state.doujin.vanillamode" class="flex-grow pt-1 text-xs font-bold text-green-500 dark:text-green-300 md:text-base">Vanilla Mode ON</p>
+    <p v-else class="flex-grow pt-1 text-xs font-bold text-red-500 dark:text-red-300 md:text-base">Vanilla Mode OFF</p>
       
     <div :class="open">
-      <button class="text-black dark:text-white text-2xl mt-1 font-bold outline-none" @click="tog()">&#9776;</button>
+      <button class="mt-1 text-2xl font-bold text-black outline-none dark:text-white" @click="tog()">&#9776;</button>
     </div>
     <nav
     :class="open ? 'navbar-open' : 'navbar-close'"
-    class="navbar w-64 absolute overflow-x-scroll bg-gray-100 dark:bg-gray-600 top-0 h-screen"
+    class="absolute top-0 z-20 h-screen overflow-x-scroll bg-gray-100 w-72 navbar dark:bg-gray-600"
     >
-      <div class="flex justify-end mx-4 my-2">
-        <button class="text-white text-xl font-bold" @click="tog()">&#9747;</button>
+      <div class="flex justify-end px-4 py-4">
+        <button class="flex items-center gap-2 text-xl text-gray-600 dark:text-white" @click="tog()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg> Close
+        </button>
       </div>
-      <p class="text-2xl font-bold text-center text-gray-800 dark:text-gray-100">Menu</p>
       <div class="mx-4 my-4">
         <label htmlFor="search-desktop" class="sr-only"> Search </label>
           <div class="relative mt-1 rounded-md shadow-sm">
@@ -67,14 +70,14 @@
           <div class="space-y-1">
 
             <nuxt-link to="/">
-              <a class="nav-button flex flex-row gap-x-4">
+              <a class="flex flex-row nav-button gap-x-4">
                 <HomeIcon class="icon"></HomeIcon>
                 Home</a
               >
             </nuxt-link>
 
             <nuxt-link to="/history">
-              <a class="nav-button flex flex-row gap-x-4">
+              <a class="flex flex-row nav-button gap-x-4">
                 <ArchiveIcon class="icon"></ArchiveIcon>
                 History</a
               >
@@ -92,21 +95,21 @@
         </li>
         
         <li class="mx-4 mt-1">
-          <a class="nav-button flex flex-row gap-x-2" @click="Setcolor()">
+          <a class="flex flex-row nav-button gap-x-2" @click="Setcolor()">
             <SunIcon class="icon"></SunIcon>
             {{ colors[cur_color] }} Mode
           </a>
         </li>
         
         <li class="mx-4 mt-1">
-          <a class="nav-button flex flex-row gap-x-2" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.safemode }" @click="ToggleSafeMode()">
+          <a class="flex flex-row nav-button gap-x-2" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.safemode }" @click="ToggleSafeMode()">
             <ExclamationIcon class="icon"></ExclamationIcon>
             Safe Mode
           </a>
         </li>
 
         <li class="mx-4 mt-1">
-          <a class="nav-button flex flex-row gap-x-2" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.vanillamode }" @click="Togglevanillamode()" >
+          <a class="flex flex-row nav-button gap-x-2" :class="{ '!bg-green-200 !dark:bg-green-800': $store.state.doujin.vanillamode }" @click="Togglevanillamode()" >
             <SparklesIcon class="icon"></SparklesIcon>
             Vanilla Mode
           </a>
@@ -118,7 +121,7 @@
           >
             Tags
           </h3>
-          <div role="group" aria-labelledby="teams-headline" class="ml-1 my-1 space-y-1">
+          <div role="group" aria-labelledby="teams-headline" class="my-1 ml-1 space-y-1">
             <a
               v-for="(tag, i) in tags_health"
               :key="i"
@@ -131,6 +134,7 @@
 
       </ul>
     </nav>
+      <div class="blacklight" :class="open ? 'navbar-open' : 'navbar-close'"></div>
   </div>
 </template>
 
@@ -155,34 +159,9 @@ export default {
     return {
       open: false,
       query: "",
-      colors: ["Light", "Dark", "System"],
-      cur_color: this.Colortoint(),
-      tags_health: [
-        {
-          name: "Vanilla",
-          color: "green",
-        },
-        {
-          name: "Warning",
-          color: "yellow",
-        },
-        {
-          name: "Dangerous",
-          color: "red",
-        },
-        {
-          name: "Position",
-          color: "pink",
-        },
-        {
-          name: "Type",
-          color: "indigo",
-        },
-        {
-          name: "More tags",
-          color: "gray",
-        },
-      ],
+      colors: this.$store.state.dounav.colors,
+      cur_color: this.colortoInt(),
+      tags_health: this.$store.state.dounav.tags_health,
     };
   },
   methods: {
@@ -212,7 +191,7 @@ export default {
     ToggleSafeMode() {
       this.$store.commit('doujin/tsafemode')
     },
-    Colortoint() {
+    colortoInt() {
       const w = this.$colorMode.preference;
       if (w === "light") {
         return 0;
@@ -235,7 +214,7 @@ input.checked ~ .dot {
 }
 
 .navbar {
-  transition: all 330ms ease-out;
+  transition: all 0.3s ease;
   right: 0;
 }
 
@@ -257,5 +236,15 @@ input.checked ~ .dot {
 
 .nav-button {
   @apply flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out rounded-md cursor-pointer dark:text-gray-100 group focus:outline-none focus:bg-gray-50 hover:text-gray-900 hover:bg-gray-50 dark:hover:bg-gray-700;
+}
+
+.blacklight {
+  position: absolute;
+  background: black;
+  opacity: 0.5;
+  width: 20000px;
+  height: 20000px;
+  top: -8000px;
+  right: -8000px;
 }
 </style>

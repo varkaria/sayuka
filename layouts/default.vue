@@ -1,9 +1,9 @@
 <template>
   <div class="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-700">
-    <div v-if="!isMobile()" class="flex">
+    <div class="hidden xl:flex">
       <NavDesktopMain v-model="search" />
     </div>
-    <div v-else>
+    <div class="block xl:hidden">
       <NavMobileMain v-model="search" />
     </div>
     <div class="flex flex-col flex-1 w-0 overflow-hidden">
@@ -24,16 +24,9 @@ export default {
   transition: 'slide',
   data() {
     return {
-      search: '',
+      search: ''
     }
-  },
-  methods: { isMobile() { 
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) 
-      { return true } 
-    else 
-      { return false }  
-    }, 
-  },
+  }
 };
 </script>
 

@@ -146,34 +146,9 @@ export default {
   data() {
     return {
       query: "",
-      colors: ["Light", "Dark", "System"],
-      cur_color: this.Colortoint(),
-      tags_health: [
-        {
-          name: "Vanilla",
-          color: "green",
-        },
-        {
-          name: "Warning",
-          color: "yellow",
-        },
-        {
-          name: "Dangerous",
-          color: "red",
-        },
-        {
-          name: "Position",
-          color: "pink",
-        },
-        {
-          name: "Type",
-          color: "indigo",
-        },
-        {
-          name: "More tags",
-          color: "gray",
-        },
-      ],
+      colors: this.$store.state.dounav.colors,
+      cur_color: this.colortoInt(),
+      tags_health: this.$store.state.dounav.tags_health,
     };
   },
   methods: {
@@ -200,7 +175,7 @@ export default {
     Togglesafemode() {
       this.$store.commit("doujin/tsafemode");
     },
-    Colortoint() {
+    colortoInt() {
       const w = this.$colorMode.preference;
       if (w === "light") {
         return 0;

@@ -1,6 +1,11 @@
 <template>
   <div class="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-700">
-    <NavDesktopMain v-model="search" />
+    <div class="hidden xl:flex">
+      <NavDesktopMain v-model="search" />
+    </div>
+    <div class="block xl:hidden">
+      <NavMobileMain v-model="search" />
+    </div>
     <div class="flex flex-col flex-1 w-0 overflow-hidden">
       <main
         class="relative z-0 flex-1 p-10 pb-6 overflow-y-auto focus:outline-none"
@@ -19,10 +24,10 @@ export default {
   transition: 'slide',
   data() {
     return {
-      search: '',
+      search: ''
     }
-  },
-}
+  }
+};
 </script>
 
 <style>

@@ -29,7 +29,7 @@
 >>>>>>> main
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
-    "chromedriver": "^91.0.1",
+    "chromedriver": "^92.0.1",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",

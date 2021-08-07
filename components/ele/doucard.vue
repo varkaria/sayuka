@@ -1,7 +1,7 @@
 <template>
   <div class="relative overflow-hidden bg-gray-200 dark:bg-gray-700 rounded-xl dou-card">
     <NuxtLink :to="`/doujin/${data.id}`">
-      <div class="absolute top-0 bottom-0 left-0 right-0 z-10 flex flex-col justify-between w-full px-4 py-6 text-white transition duration-200 ease-in-out opacity-0 bg-black-overlay hover:opacity-100 md:px-5 lg:px-6 2xl:py-10">
+      <div class="absolute top-0 bottom-0 left-0 right-0 z-10 flex flex-col justify-between w-full px-4 py-6 text-white transition duration-200 ease-in-out opacity-0 bg-black-overlay hover:opacity-100 md:px-5 lg:px-6 2xl:py-8">
         <div>
             <p class="text-xs truncate font-regular sm:text-sm md:text-sm">
             {{ data.title }}
@@ -12,7 +12,7 @@
           <EleDoutags :tags='data.tags' />
         </div>
         <div class="flex pt-1">
-          <div class="flex items-center pr-2 text-sm">{{ data.artist }}</div>
+          <div class="flex items-center pr-2 text-sm font-medium">{{ data.artist }}</div>
         </div>
       </div>
       <div class="transition-all" :class="{ 'safe-mode' : $store.state.doujin.safemode }">
@@ -20,7 +20,7 @@
           <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjUwMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="/>
         </div>
         <progressive-img
-          :src="`https://api.varkaria.tech/get_image/${data.preview[0]}/${data.preview[1]}`"
+          :src="`https://api.varkaria.tech/get_image/${data.preview[0]}/${data.preview[1]}?o=True`"
           class="overflow-hidden img-card blur"
         />
       </div>

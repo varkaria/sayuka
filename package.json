@@ -14,7 +14,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@vue-hero-icons/outline": "^1.7.2",
-    "core-js": "^3.16.0",
+    "core-js": "^3.16.1",
     "nuxt": "^2.15.7",
     "vue-progressive-image": "^3.2.0",
     "vuex-persistedstate": "^4.0.0"

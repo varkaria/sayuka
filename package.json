@@ -30,7 +30,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.15.1",
     "nightwatch": "^1.7.8",
-    "nuxt-windicss": "^1.2.2",
+    "nuxt-windicss": "^2.2.7",
     "prettier": "^2.3.2"
   }
 }

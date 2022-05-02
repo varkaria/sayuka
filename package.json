@@ -29,7 +29,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.15.1",
-    "nightwatch": "^1.7.8",
+    "nightwatch": "^2.1.4",
     "nuxt-windicss": "^2.2.11",
     "prettier": "^2.3.2"
   }
